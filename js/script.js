@@ -244,7 +244,7 @@ console.log(Object.assign(numbers,add));
 
 const clone = Object.assign({},add); */
 
-const personalPlanPeter = {
+/* const personalPlanPeter = {
     name: "Peter",
     age: "29",
     skills: {
@@ -305,5 +305,46 @@ function showProgrammingLangs(plan) {
 
 //console.log(showProgrammingLangs(personalPlanPeter));
 
+
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter)); */
+
+
+
+
+
+
+//console.log(showExperience(personalPlanPeter));
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+	showAgeAndLangs: function(obj){
+      	let {age} = obj;
+		let {languages} = obj.skills;
+		let str = '';
+		let result = '';
+		languages.forEach(function(element){
+			str+=element+" ";
+		});
+		result = `Мне ${age} и я владею языками: ${str.toUpperCase()}`
+		return result;
+    }
+};
+function showProgrammingLangs(plan) {
+	let {programmingLangs} = plan.skills;
+	let str = '';
+
+	for (let key in programmingLangs){
+		str += `Язык ${key} изучен на ${lang[key]}\n`;
+	}
+	return str;
+}
 
 console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
