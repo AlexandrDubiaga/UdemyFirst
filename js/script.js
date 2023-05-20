@@ -95,11 +95,96 @@ const personalMovieDB = {
 
 const personal = new Object(personalMovieDB);
 
-personal.start();
+/* personal.start();
 personal.toggleVisibleMyDB();
 personal.moviesStatus();
 personal.checkMovie();
-personal.writeYourgenres();
+personal.writeYourgenres(); */
+
+
+const shoppingMallData = {
+    shops: [
+        {
+            width: 10,
+            length: 5
+        },
+        {
+            width: 15,
+            length: 7
+        },
+        {
+            width: 20,
+            length: 5
+        },
+        {
+            width: 8,
+            length: 10
+        }
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
+}
 
 
 
+function isBudgetEnough(data) {
+	let arr = [];
+	let sum = 0;
+	let budjet = '';
+	
+	const {shops} = data;
+
+	for (let value of shops) {
+			arr.push(value.width * value.length ) ;
+	  }
+	
+	arr.forEach((el)=>{
+		sum+= el*data.height;
+	});
+	let moneyNeedForShopForHeat =  data.moneyPer1m3 * sum;
+	if(data.budget > moneyNeedForShopForHeat){
+		budjet+=`Бюджета достаточно`;
+		return budjet;
+	}else if(+data.budget < moneyNeedForShopForHeat){
+		budjet+=`Бюджета недостаточно`;
+		return budjet;
+	}
+	return budjet;
+
+
+}
+
+//console.log(isBudgetEnough(shoppingMallData));
+
+const students = ['Momo','Rex','Koko','Rembo','Fox', 'Josh','Sonia', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Kill'];
+
+function sortStudentsByGroups(arr) {
+	let arrStudent = [];
+	let str ='Оставшиеся студенты: ';
+    let count = 0;
+let size = 3; //размер подмассива
+let subarray = []; //массив в который будет выведен результат.
+arr.sort();
+for (let i = 0; i <Math.ceil(arr.length/size); i++){
+    subarray[i] = arr.slice((i*size), (i*size) + size);
+}
+subarray.forEach((el,i)=>{
+	if(el.length <3){
+		str+= el.join(', ');
+		subarray.pop(el);
+		subarray.push(str);
+	}
+});
+
+let bool = subarray.some(elem => typeof(elem)==='string');  //
+if(!bool){
+	str+='-';
+	subarray.push(str);
+}
+
+return subarray;
+
+}
+
+sortStudentsByGroups(students);
