@@ -188,3 +188,25 @@ return subarray;
 }
 
 sortStudentsByGroups(students);
+
+function hello(){
+	console.log('Hello');
+}
+hello();
+function hi(){
+	console.log('Say hi');
+}
+hi();
+
+const arr = [1,14,4,40,5];
+let sorted = arr.sort(compareNum);
+
+
+function compareNum(a ,b){
+	return a-b;
+}
+console.log(sorted);
+
+
+
+
