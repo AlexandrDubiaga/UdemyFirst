@@ -101,7 +101,7 @@ personal.moviesStatus();
 personal.checkMovie();
 personal.writeYourgenres(); */
 
-
+/* 
 const shoppingMallData = {
     shops: [
         {
@@ -192,11 +192,11 @@ sortStudentsByGroups(students);
 function hello(){
 	console.log('Hello');
 }
-hello();
+//hello();
 function hi(){
 	console.log('Say hi');
 }
-hi();
+//hi();
 
 const arr = [1,14,4,40,5];
 let sorted = arr.sort(compareNum);
@@ -204,9 +204,146 @@ let sorted = arr.sort(compareNum);
 
 function compareNum(a ,b){
 	return a-b;
+} */
+//console.log(sorted);
+
+
+/* function getCounter (){
+	let counter = 0;
+
+	function strartCounter(){
+		counter = counter + 1;
+		return counter;
+	}
+	return strartCounter;
 }
-console.log(sorted);
+
+let increment = getCounter();
+let c1 = increment();
+let c2 = increment();
+let c3 = increment();
+console.log(c1, c2, c3); */
 
 
 
 
+
+
+
+const restorantData = {
+    menu: [
+        {
+            name: 'Salad Caesar',
+            price: '14$'
+        },
+        {
+            name: 'Pizza Diavola',
+            price: '9$'
+        },
+        {
+            name: 'Beefsteak',
+            price: '17$'
+        },
+        {
+            name: 'Napoleon',
+            price: '7$'
+        }
+    ],
+    waitors: [
+        {name: 'Alice', age: 22}, {name: 'John', age: 24}
+    ],
+    averageLunchPrice: '20$',
+    openNow: true
+};
+
+function isOpen(prop) {
+    let answer = '';
+    prop ? answer = 'Открыто' : answer = 'Закрыто';
+    return answer;
+}
+
+console.log(isOpen(restorantData.openNow))
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+	let first = +fDish.price.slice(0,-1);
+	let second = +sDish.price.slice(0,-1);
+	let newAverage = +average.slice(0,-1);
+
+    if ((first + second) < newAverage) {
+        return 'Цена ниже средней';
+    } else {
+        return 'Цена выше средней';
+    }
+}
+
+console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+
+function transferWaitors(data) {
+    const copy = Object.assign({}, data);
+	let newObj = JSON.parse(JSON.stringify(copy));
+    newObj.waitors[0] = {name: 'Mike', age: 32};
+    return newObj;
+}
+
+transferWaitors(restorantData);
+
+
+const data = {
+    menu: [
+        {
+            name: 'Salad Caesar',
+            price: '14$'
+        },
+        {
+            name: 'Pizza Diavola',
+            price: '9$'
+        },
+        {
+            name: 'Beefsteak',
+            price: '17$'
+        },
+        {
+            name: 'Napoleon',
+            price: '7$'
+        }
+    ],
+    waitors: [
+        {name: 'Alice', age: 22}, {name: 'John', age: 24}
+    ],
+    averageLunchPrice: '20$',
+    openNow: true
+};
+
+
+function copyDada(data){
+	let copyObj = {};
+	
+
+	for(let value in data){
+		copyObj[value] = data[value];
+	}
+	
+	for(let key in copyObj){
+		if(typeof(copyObj[key])==='object'){
+			copyObj[key].forEach(()=>{
+				copyObj[key] = [...copyObj[key]];
+			});
+		}
+
+	}
+
+	copyObj.menu[0] = {
+		name: 'Alex',
+		price: '20$'
+	};
+	copyObj.waitors[0] = {
+		name: 'kila',
+		age: 45
+	};
+
+	return copyObj;
+}
+
+console.log(copyDada(data));
+
+console.log(data);
