@@ -1,75 +1,63 @@
 'use strict';
-let str = 'box';
+const btn = document.querySelectorAll('button');
+//const overlay = document.querySelector('.overlay');
 
-//один єдлемент!!
-const box = document.getElementById(str);
-const oneHeart = document.querySelector('.heart');   //первый элемент
-const wrapper = document.querySelector('.wrapper');   //первый элемент
+/* btn.onclick = (e)=>{
+    if(+e.target.textContent === 1){
+        e.target.textContent = 'Suck';
+    }
+   
+}; */
+
+let i = 0;
+const deleteElement = (e) =>{
+    console.log(e.currentTarget);
+   /*  i++;
+    if(i==1){
+        btn.removeEventListener('click', deleteElement);
+    } */
+};
 
 
-//массывы элементов
-const button = document.getElementsByTagName('button'); // массив кнопок
-const circles = document.getElementsByClassName('circle');
-const hearts = wrapper.querySelectorAll('.heart');  //forEach
 
+btn.forEach((e)=>{
+    e.addEventListener('click',deleteElement,{once:true});
+});
+const link = document.querySelector('a');
 
-
-/* 
-box.style.backgroundColor = 'blue';
-box.style.width = '500px';
-box.style.height = '300px'; */
-
-button[1].style.borderRadius = '100%';
-
-circles[1].style.backgroundColor = 'pink';
-
-button[1].onclick = (e)=> {
-	e.target.textContent = '25';
-}
-
-box.style.cssText = 'border-radius: 50%;background-color: maroon; width: 400px';
-
-/* for(let i = 0; i < hearts.length; i++){
-	hearts[i].style.backgroundColor = 'blue';
-}
- */
-
-hearts.forEach((el)=>{
-	el.style.backgroundColor = 'blue';
+link.addEventListener('click',(e)=>{
+    e.preventDefault();
 });
 
 
-const div = document.createElement('div');
-const text = document.createTextNode('Here was i');
-div.classList.add('black');
-wrapper.appendChild(div);
+console.log(document.body.childNodes);
 
-div.innerHTML = '<h1>Hello world</h1>';
-div.textContent = 'Main';
+ console.log(document.body.firstChild);
+console.log(document.body.firstElementChild);
 
-//div.insertAdjacentHTML('beforebegin', '<h2>Hello</h2>');
-div.insertAdjacentHTML('afterend', '<h2>Hello </h2>');
+console.log(document.body.lastChild);
+
+console.log(document.querySelector('#current').parentNode.parentNode);
 
 
+console.log(document.querySelector('#current').parentNode.parentElement);
+
+console.log(document.querySelector('[data-current="Milk"]').nextSibling);
+console.log(document.querySelector('[data-current="Milk"]').previousSibling);
+console.log(document.querySelector('[data-current="Milk"]').nextElementSibling); 
+
+ document.body.childNodes.forEach((item)=>{
+console.log(item);
+}); 
 
 
 
 
 
-//wrapper.insertBefore(div,hearts[2]);
-//wrapper.removeChild(hearts[1]);
-//wrapper.replaceChild(circles[0],hearts[0]);
-
-//wrapper.append(div);
-//wrapper.prepend(div);
-
-//hearts[0].before(div);
-//hearts[0].after(div);
-
-//circles[0].remove();
 
 
-//hearts[0].replaceWith(circles[0]);
+
+
 
 
 
